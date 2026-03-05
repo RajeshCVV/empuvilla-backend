@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: empuvilla-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: PORT
+        value: 10000
+      - key: PTAP_LAT
+        value: "3.17253"
+      - key: PTAP_LNG
+        value: "-76.4588"
+      - key: PTAP_RADIO
+        value: "35"
+      - key: PTAR_LAT
+        value: "3.17300"
+      - key: PTAR_LNG
+        value: "-76.4600"
+      - key: PTAR_RADIO
+        value: "50"
