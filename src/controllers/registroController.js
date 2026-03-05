@@ -114,13 +114,10 @@ const deleteRegistrosRango = async (req, res) => {
             return res.status(400).json({ mensaje: 'Datos incompletos' });
         }
 
-        const inicio = new Date(`${desde}T00:00:00`);
-        const fin = new Date(`${hasta}T23:59:59`);
-
         const resultado = await Registro.deleteMany({
             nombreOperario: operario,
             planta,
-            creadoEn: { $gte: inicio, $lte: fin },
+            fechaDia: { $gte: desde, $lte: hasta },
         });
 
         res.json({ mensaje: 'Registros eliminados', eliminados: resultado.deletedCount });
